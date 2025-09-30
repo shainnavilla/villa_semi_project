@@ -1,0 +1,17 @@
+1. Q: In line 40, what is the second parameter of bufferData() and why do we pass a number instead of data to vBuffer?
+   A: 8*maxNumPositions - We pass a number instead of data to vBuffer because we are allocating space for the buffer without filling it yet. The buffer will be filled later with actual vertex position data using bufferSubData().
+
+2. Q: What does cIndex represent in the code?
+   A: at least 200 meters - cIndex represents the currently selected color index from the menu (0-4), which corresponds to the color array indices (Black=0, Red=1, Green=2, Blue=3, Yellow=4).
+
+3. Q: If the canvas is 500 pixels wide and the mouse is at position 300, what would xPos be?
+   A: 500 pixels wide canvas, mouse at 300 - xPos would be (2 * 300/500) - 1 = 1.2 - 1 = 0.2
+
+4. Q: If t[0] is [200, 142] and t[2] is [152, 300], what would t[1] and t[3] be?
+   A: t[0] is [200, 142] and t[2] is [152, 300] - t[1] would be vec2(t[0][0], t[2][1]) = vec2(200, 300) and t[3] would be vec2(t[2][0], t[0][1]) = vec2(152, 142)
+
+5. Q: How many rectangles have been drawn if the index value is 252?
+   A: 252 rectangles - To get an index value of 252, we need index = 252. Since index increments by 4 for each rectangle, we need 252/4 = 63 rectangles.
+
+6. Q: In line 101, what is the offset parameter and why is it calculated this way?
+   A: 16*(index-4+i) - The offset is 16*(index-4+i) because each color is a vec4 (4 floats), and each float is 4 bytes, so 4*4=16 bytes per color. We use (index-4+i) to reference the 4 corners we just added, starting from the current index minus 4.
