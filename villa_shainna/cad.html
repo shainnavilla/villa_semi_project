@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniCAD Program</title>
+  <meta charset="utf-8">
+  <title>villa MiniCAD</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="800" height="600"></canvas>
-    <br>
-    <select id="menu" size="5">
-        <option value="0">Black</option>
-        <option value="1">Red</option>
-        <option value="2">Green</option>
-        <option value="3">Blue</option>
+  <canvas id="glCanvas" width="800" height="550" style="border:1px solid rgb(252, 205, 219);"></canvas>
+
+  <br><br>
+  <select id="menu" size="5">
+        <option value="0">Pink</option>
+        <option value="1">Orange</option>
+        <option value="2">Blue</option>
+        <option value="3">Green</option>
         <option value="4">Yellow</option>
-    </select>
-    <br>
-    <button id="clearButton">Clear</button>
+  </select>
 
-    <!-- Vertex Shader -->
-    <script id="vertex-shader" type="x-shader/x-vertex">
-        #version 300 es
-        in vec4 aPosition;
-        in vec4 aColor;
-        out vec4 vColor;
+  <br><br>
+  <!-- Clear Button -->
+  <button id="clearButton">Clear</button>
 
-        void main() {
-            gl_Position = aPosition;
-            vColor = aColor;
-        }
-    </script>
+  <!-- Vertex Shader -->
+  <script id="vertex-shader" type="x-shader/x-vertex">
+  #version 300 es
+  in vec4 aPosition;
+  in vec4 aColor;
+  out vec4 vColor;
+  
+  void main() {
+    gl_Position = aPosition;
+    vColor = aColor;
+  }
+  </script>
 
-    <!-- Fragment Shader -->
-    <script id="fragment-shader" type="x-shader/x-fragment">
-        #version 300 es
-        precision mediump float;
+  <!-- Fragment Shader -->
+  <script id="fragment-shader" type="x-shader/x-fragment">
+  #version 300 es
+  precision mediump float;
+  
+  in vec4 vColor;
+  out vec4 fColor;
+ 
+  void main() {
+    fColor = vColor;
+  }
+  </script>
 
-        in vec4 vColor;
-        out vec4 fColor;
-
-        void main() {
-            fColor = vColor;
-        }
-    </script>
-
-    <script src="cad.js"></script>
+  <script src="js/MV.js"></script>
+  <script src="js/initShaders.js"></script>
+  <script src="cad.js"></script>
 </body>
 </html>
